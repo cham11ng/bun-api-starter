@@ -1,16 +1,21 @@
 import { Elysia } from "elysia";
 import swagger from '@elysiajs/swagger';
+import { logger } from '@grotto/logysia';
+
 
 import config from './config';
 import * as db from './config/db';
-import errorHandler from './middlewares/errorHandler';
 import userRoutes from './routes/user';
+import errorHandler from './middlewares/errorHandler';
+import securityHandler from './middlewares/securityHandler';
 
 const app = new Elysia()
 
 db.connect();
 
 app
+  .use(logger())
+  .use(securityHandler)
   .use(errorHandler)
   .use(userRoutes)
   .use(swagger({

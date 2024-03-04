@@ -6,8 +6,12 @@
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
+    "@elysiajs/cors": "^0.8.0",
+    "@elysiajs/jwt": "^0.8.0",
     "@elysiajs/swagger": "^0.8.5",
-    "elysia": "latest",
+    "@grotto/logysia": "^0.1.1",
+    "elysia": "^0.8.17",
+    "elysia-helmet": "^1.0.2",
     "mongoose": "^8.2.0"
   },
   "devDependencies": {
