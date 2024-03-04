@@ -22,7 +22,9 @@ Open <http://localhost:8000/docs> with your browser to see the result.
 ### cURL
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"name": "Name", "email": "name@domain.com", "password": "secret@123"}' localhost:8000/users
+curl -X POST -H "Content-Type: application/json" \
+  -d '{"name": "Name", "email": "name@domain.com", "password": "secret@123"}' \
+  localhost:8000/users
 ```
 
 ### Docker
