@@ -2,12 +2,11 @@
   "name": "bun-api-starter",
   "version": "0.1.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test bun test ./test/**.test.ts",
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
     "@elysiajs/cors": "^0.8.0",
-    "@elysiajs/jwt": "^0.8.0",
     "@elysiajs/swagger": "^0.8.5",
     "@grotto/logysia": "^0.1.1",
     "elysia": "^0.8.17",
