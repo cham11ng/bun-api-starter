@@ -7,12 +7,13 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true, select: false }
   },
   {
+    timestamps: true,
     methods: {
       comparePassword(password: string) {
         return Bun.password.verifySync(password, this.password);
       },
     },
-  }
+  },
 );
 
 // Pre-save middleware to bcrypt the password

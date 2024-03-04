@@ -11,6 +11,7 @@
     "@grotto/logysia": "^0.1.1",
     "elysia": "^0.8.17",
     "elysia-helmet": "^1.0.2",
+    "http-status-codes": "^2.3.0",
     "mongoose": "^8.2.0"
   },
   "devDependencies": {

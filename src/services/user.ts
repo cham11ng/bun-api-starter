@@ -1,4 +1,5 @@
 import { User } from '../models/User';
+import ConflictError from '../domain/exceptions/ConflictError';
 
 export async function create(payload: User) {
   try {
@@ -10,9 +11,7 @@ export async function create(payload: User) {
     return res;
   } catch (e: any) {
     if (e.name === 'MongoServerError' && e.code === 11000) {
-      console.log('Error: User exists.')
-    } else {
-      console.log("Error:", e);
+      throw new ConflictError('User exists.');
     }
 
     throw e;
