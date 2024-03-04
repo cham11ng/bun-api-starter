@@ -17,7 +17,13 @@ $ bun run dev
 Bun (🍔) API Starter is running at localhost:8000
 ```
 
-Open <http://localhost:8000/> with your browser to see the result.
+Open <http://localhost:8000/docs> with your browser to see the result.
+
+### cURL
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"name": "Name", "email": "name@domain.com", "password": "secret@123"}' localhost:8000/users
+```
 
 ### Docker
 

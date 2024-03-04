@@ -20,10 +20,7 @@ services:
     env_file: ".env.docker"
     container_name: "starter-api"
     volumes:
-      - "./src:/source/src"
-      - "./package.json:/source/package.json"
-      - "./bun.lockb:/source/bun.lockb"
-      - "./tsconfig.json:/source/tsconfig.json"
+      - "./:/source"
     working_dir: /source
     depends_on:
       - mongodb
