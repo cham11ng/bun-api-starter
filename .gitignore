@@ -43,3 +43,6 @@ package-lock.json
 
 # environment variables
 .env
+
+# docker volumes
+data

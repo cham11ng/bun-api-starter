@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  mongodb:
+    image: "mongo:latest"
+    env_file: ".env.docker"
+    container_name: "starter-mongodb"
+    volumes:
+      - "./data/mongodb:/data/db"
+      - "./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro"
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "rootuser"
+      MONGO_INITDB_ROOT_PASSWORD: "root@123"
+      MONGO_INITDB_DATABASE: ${DB_NAME:-starter}
+
+  api:
+    image: "oven/bun"
+    env_file: ".env.docker"
+    container_name: "starter-api"
+    volumes:
+      - "./src:/source/src"
+      - "./package.json:/source/package.json"
+      - "./bun.lockb:/source/bun.lockb"
+      - "./tsconfig.json:/source/tsconfig.json"
+    working_dir: /source
+    depends_on:
+      - mongodb
+    ports:
+      - "8000:8000"
+    command: sh -c "bun install & bun run dev"

@@ -1,0 +1,8 @@
+node_modules
+data
+
+README.md
+LICENSE
+
+.gitignore
+mongo-init.js

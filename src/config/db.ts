@@ -1,8 +1,14 @@
+import config from '.';
 import * as mongoose from 'mongoose';
 import { Animal } from '../models/animal';
 
+const { dbUsername, dbPassword, dbHost, dbPort, dbName } = config.db;
+
+// Construct the connection string
+const connectionString = `mongodb://${dbUsername}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`;
+
 // connect to database
-await mongoose.connect('mongodb://127.0.0.1:27017/mongoose-app');
+await mongoose.connect(connectionString);
 
 // create new Animal
 const cow = new Animal({
