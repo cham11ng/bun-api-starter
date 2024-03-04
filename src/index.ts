@@ -8,7 +8,7 @@ import * as db from './config/db';
 import userRoutes from './routes/user';
 import errorHandler from './middlewares/errorHandler';
 import securityHandler from './middlewares/securityHandler';
-import APIError from './domain/exceptions/APIError';
+
 import ConflictError from './domain/exceptions/ConflictError';
 
 const app = new Elysia()
@@ -18,8 +18,7 @@ db.connect();
 app
   .use(logger())
   .use(securityHandler)
-  .error('APIError', APIError)
-  .error('ConflictError', ConflictError)
+  .error({ ConflictError })
   .use(errorHandler)
   .use(swagger({
     path: '/docs',

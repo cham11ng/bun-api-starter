@@ -1,18 +1,19 @@
 import { Elysia } from 'elysia';
 import { StatusCodes } from 'http-status-codes';
-import APIError from '../domain/exceptions/APIError';
 
+import ConflictError from '../domain/exceptions/ConflictError';
 
 export default (app: Elysia) =>
   app
     .onError((handler) => {
       console.log("Error Message:", handler.error.message)
-      if (handler.error instanceof APIError) {
-        handler.set.status = handler.error.code;
+
+      if (handler.error instanceof ConflictError) {
+        handler.set.status = handler.error.status;
 
         return {
           message: handler.error.message,
-          status: handler.error.code
+          status: handler.error.status
         }
       }
 

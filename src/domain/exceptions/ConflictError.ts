@@ -1,12 +1,12 @@
 import { StatusCodes } from 'http-status-codes';
 
-import APIError from './APIError';
+class ConflictError extends Error {
+  public status: number;
 
-class ConflictError extends APIError {
-  constructor(message: string) {
-    super(message, StatusCodes.CONFLICT);
+  constructor(public message: string) {
+    super(message);
 
-    this.message = message;
+    this.status = StatusCodes.CONFLICT;
   }
 }
 
