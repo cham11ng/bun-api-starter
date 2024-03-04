@@ -8,7 +8,7 @@ import userRoutes from './routes/user';
 import errorHandler from './middlewares/errorHandler';
 import securityHandler from './middlewares/securityHandler';
 
-export const app = new Elysia()
+const app = new Elysia()
 
 db.connect();
 
@@ -37,3 +37,5 @@ app
       `Bun (🍔) API Starter is running at ${app.server?.hostname}:${app.server?.port}`
     )
   });
+
+export default app;
