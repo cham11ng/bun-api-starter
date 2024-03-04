@@ -29,4 +29,4 @@ services:
       - mongodb
     ports:
       - "8000:8000"
-    command: sh -c "bun install & bun run dev"
+    command: bash -c "bun install && bun run dev"
