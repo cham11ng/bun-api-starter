@@ -3,7 +3,6 @@ import ConflictError from '../domain/exceptions/ConflictError';
 
 export async function create(payload: User) {
   try {
-
     const animal = new User(payload);
 
     const res = await animal.save();

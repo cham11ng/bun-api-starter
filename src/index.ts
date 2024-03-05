@@ -2,7 +2,6 @@ import { Elysia } from "elysia";
 import swagger from '@elysiajs/swagger';
 import { logger } from '@grotto/logysia';
 
-
 import config from './config';
 import * as db from './config/db';
 import userRoutes from './routes/user';
