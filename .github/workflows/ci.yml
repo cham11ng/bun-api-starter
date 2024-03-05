@@ -1,0 +1,40 @@
+name: Bun (🍔) API Starter Build
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    paths-ignore:
+      - "README.md"
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.10.0
+        with:
+          mongodb-username: starter
+          mongodb-password: secret
+          mongodb-db: starter
+
+      - name: Installing dependencies
+        run: bun install
+
+      - name: Run tests
+        run: bun run test
+        env:
+          DB_NAME: starter
+          DB_PASSWORD: secret
+          DB_USERNAME: starter
+          DB_PORT: 27017
+          DB_HOST: mongodb
+          TEST_APP_HOST: 127.0.0.1
+          TEST_APP_PORT: 8001
