@@ -1,5 +1,9 @@
 # bun-api-starter
 
+[![Bun (🍔) API Starter](https://github.com/cham11ng/bun-api-starter/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/cham11ng/bun-api-starter/actions/workflows/ci.yml)
+
+A robust Bun-based API starter built using ElysiaJS framework, and MongoDB as database. ElysiaJS, a type-safe and fast framework. MongoDB, a powerful NoSQL database. This starter offers a solid foundation for your API development, allowing you to focus on your unique business logic.
+
 ## Getting Started
 
 To install bun.

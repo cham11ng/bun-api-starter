@@ -1,4 +1,4 @@
-name: Bun (🍔) API Starter Build
+name: Bun (🍔) API Starter CI
 
 on:
   # Runs on pushes targeting the default branch
