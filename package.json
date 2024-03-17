@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "test": "NODE_ENV=test bun test ./test/**.test.ts",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "pretty": "prettier --write ."
   },
   "dependencies": {
     "@elysiajs/cors": "^1.0.0",
@@ -11,11 +12,19 @@
     "@elysiajs/swagger": "^1.0.0",
     "elysia": "^1.0.0",
     "http-status-codes": "^2.3.0",
-    "mongoose": "^8.2.0",
+    "mongoose": "^8.2.2",
     "yoctocolors": "^2.0.0"
   },
   "devDependencies": {
-    "bun-types": "^1.0.29"
+    "bun-types": "^1.0.31",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write"
+    ]
   },
   "module": "src/index.js"
 }
