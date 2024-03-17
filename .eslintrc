@@ -1,7 +1,7 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["sonarjs"],
+  "plugins": ["sonarjs", "simple-import-sort", "jsdoc"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
@@ -11,16 +11,17 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "plugin:sonarjs/recommended"
+    "plugin:sonarjs/recommended",
+    "plugin:jsdoc/recommended-typescript"
   ],
   "rules": {
     "no-error-on-unmatched-pattern": "off",
-    "@typescript-eslint/no-explicit-any": "off", // TODO: Remove this.
-    "@typescript-eslint/no-non-null-assertion": "off",
-		"@typescript-eslint/ban-ts-comment": "off",
-		"@typescript-eslint/no-namespace": "off",
-    "no-return-await": "off",
+    "@typescript-eslint/no-explicit-any": "warn", // TODO: Remove this.
     "sonarjs/cognitive-complexity": "off",
-    "@typescript-eslint/no-shadow": ["error"]
+    "@typescript-eslint/no-shadow": ["error"],
+    "simple-import-sort/imports": "warn",
+    "jsdoc/no-types": "off",
+    "jsdoc/tag-lines": "off",
+    "jsdoc/require-returns-description": "off"
   }
 }

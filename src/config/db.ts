@@ -1,5 +1,6 @@
-import config from '.';
 import * as mongoose from 'mongoose';
+
+import config from '.';
 
 const { dbUsername, dbPassword, dbHost, dbPort, dbName } = config.db;
 const connectionString = `mongodb://${dbUsername}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`;

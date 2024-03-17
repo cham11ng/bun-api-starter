@@ -1,5 +1,11 @@
 import * as yc from 'yoctocolors';
 
+/**
+ * Returns the duration message.
+ *
+ * @param {bigint} beforeTime The time before the request.
+ * @returns {string}
+ */
 export function durationString(beforeTime: bigint): string {
   const now = process.hrtime.bigint();
   const timeDifference = now - beforeTime;
@@ -25,6 +31,11 @@ export function durationString(beforeTime: bigint): string {
   return timeMessage;
 }
 
+/**
+ * Returns the duration message.
+ * @param {string} method The method.
+ * @returns {string}
+ */
 export function methodString(method: string): string {
   switch (method) {
     case 'GET':

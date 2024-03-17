@@ -1,12 +1,12 @@
-import { Elysia } from 'elysia';
 import swagger from '@elysiajs/swagger';
+import { Elysia } from 'elysia';
 
 import config from './config';
 import * as db from './config/db';
-import userRoutes from './routes/user';
 import errorHandler from './middlewares/errorHandler';
 import loggerHandler from './middlewares/loggerHandler';
 import securityHandler from './middlewares/securityHandler';
+import userRoutes from './routes/user';
 
 const app = new Elysia();
 

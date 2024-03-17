@@ -5,6 +5,8 @@ import ConflictError from '../domain/exceptions/ConflictError';
 
 export default (app: Elysia) =>
   app.error({ ConflictError }).onError((handler) => {
+    console.error(handler.error?.stack);
+
     if (handler.error instanceof ConflictError) {
       handler.set.status = handler.error.status;
 
@@ -21,7 +23,9 @@ export default (app: Elysia) =>
         status: handler.set.status
       };
     }
-    if (handler.set.status === StatusCodes.BAD_REQUEST) {
+
+    if (handler.code === 'VALIDATION') {
+      handler.set.status = StatusCodes.BAD_REQUEST;
       return {
         message: 'Bad Request!',
         status: handler.set.status

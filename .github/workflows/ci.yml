@@ -28,6 +28,9 @@ jobs:
       - name: Installing dependencies
         run: bun install
 
+      - name: Run linter
+        run: bun run lint
+
       - name: Run tests
         run: bun run test
         env:

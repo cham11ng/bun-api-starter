@@ -5,8 +5,12 @@ import * as yc from 'yoctocolors';
 import { durationString, methodString } from '../utils/logger';
 
 export default new Elysia()
+  .state({ beforeTime: process.hrtime.bigint(), as: 'global' })
+  .onRequest((ctx) => {
+    ctx.store.beforeTime = process.hrtime.bigint();
+  })
   .onBeforeHandle({ as: 'global' }, (ctx) => {
-    ctx.store = { ...ctx.store, beforeTime: process.hrtime.bigint() };
+    ctx.store.beforeTime = process.hrtime.bigint();
   })
   .onAfterHandle({ as: 'global' }, ({ request, store }) => {
     const logStr: string[] = [];
@@ -14,7 +18,7 @@ export default new Elysia()
     logStr.push(methodString(request.method));
     logStr.push(new URL(request.url).pathname);
 
-    const beforeTime: bigint = (store as any).beforeTime;
+    const beforeTime: bigint = store.beforeTime;
 
     logStr.push(durationString(beforeTime));
 
@@ -33,7 +37,7 @@ export default new Elysia()
 
     logStr.push(error.message);
 
-    const beforeTime: bigint = (store as any).beforeTime;
+    const beforeTime: bigint = store.beforeTime;
     logStr.push(durationString(beforeTime));
 
     console.log(logStr.join(' '));
