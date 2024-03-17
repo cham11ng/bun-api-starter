@@ -2,9 +2,10 @@ import { Elysia } from 'elysia';
 import { StatusCodes } from 'http-status-codes';
 
 import ConflictError from '../domain/exceptions/ConflictError';
+import ErrorResponse from '../domain/types/ErrorResponse';
 
 export default (app: Elysia) =>
-  app.error({ ConflictError }).onError((handler) => {
+  app.error({ ConflictError }).onError((handler): ErrorResponse<number> => {
     console.error(handler.error?.stack);
 
     if (handler.error instanceof ConflictError) {
@@ -12,7 +13,7 @@ export default (app: Elysia) =>
 
       return {
         message: handler.error.message,
-        status: handler.error.status
+        code: handler.error.status
       };
     }
 
@@ -20,7 +21,7 @@ export default (app: Elysia) =>
       handler.set.status = StatusCodes.NOT_FOUND;
       return {
         message: 'Not Found!',
-        status: handler.set.status
+        code: handler.set.status
       };
     }
 
@@ -28,14 +29,14 @@ export default (app: Elysia) =>
       handler.set.status = StatusCodes.BAD_REQUEST;
       return {
         message: 'Bad Request!',
-        status: handler.set.status
+        code: handler.set.status
       };
     }
 
-    handler.set.status ||= StatusCodes.SERVICE_UNAVAILABLE;
+    handler.set.status = StatusCodes.SERVICE_UNAVAILABLE;
 
     return {
       message: 'Server Error!',
-      status: handler.set.status
+      code: handler.set.status
     };
   });

@@ -4,13 +4,26 @@ import config from '../src/config';
 
 export const baseUrl = `http://${config.app.host}:${config.app.port}`;
 
-export const getRequest = (route: string) => {
+/**
+ * Represents a request.
+ *
+ * @param {string} route The route.
+ * @returns {Request}
+ */
+export function getRequest(route: string) {
   const fullPath = path.join(baseUrl, route);
 
   return new Request(fullPath);
-};
+}
 
-export const postRequest = <T>(route: string, payload: T) => {
+/**
+ * Represents a POST request.
+ *
+ * @param {string} route The route.
+ * @param {Payload} payload The payload.
+ * @returns
+ */
+export function postRequest<Payload extends object>(route: string, payload: Payload) {
   const fullPath = path.join(baseUrl, route);
 
   return new Request(fullPath, {
@@ -20,4 +33,4 @@ export const postRequest = <T>(route: string, payload: T) => {
     },
     body: JSON.stringify(payload)
   });
-};
+}

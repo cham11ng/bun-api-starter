@@ -3,9 +3,9 @@ import { Elysia } from 'elysia';
 
 import config from './config';
 import * as db from './config/db';
-import errorHandler from './middlewares/errorHandler';
-import loggerHandler from './middlewares/loggerHandler';
-import securityHandler from './middlewares/securityHandler';
+import errorHandler from './handlers/error';
+import loggerHandler from './handlers/logger';
+import securityHandler from './handlers/security';
 import userRoutes from './routes/user';
 
 const app = new Elysia();
@@ -35,9 +35,7 @@ app
   })
   .use(userRoutes)
   .listen(config.app.port, () => {
-    console.log(
-      `Bun (🍔) API Starter is running at ${app.server?.hostname}:${app.server?.port}`
-    );
+    console.log(`Bun (🍔) API Starter is running at ${app.server?.hostname}:${app.server?.port}`);
   });
 
 export default app;

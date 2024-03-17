@@ -7,9 +7,7 @@ export default {
     name: data.name,
     version: data.version,
     host: process.env.TEST_APP_HOST,
-    port:
-      (isTestEnvironment ? process.env.TEST_APP_PORT : process.env.APP_PORT) ||
-      '8000'
+    port: (isTestEnvironment ? process.env.TEST_APP_PORT : process.env.APP_PORT) || '8000'
   },
   db: {
     dbName: process.env.DB_NAME,
