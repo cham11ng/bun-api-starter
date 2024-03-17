@@ -5,10 +5,11 @@ import ConflictError from '../domain/exceptions/ConflictError';
 
 export default (app: Elysia) =>
   app
+    .error({ ConflictError })
     .onError((handler) => {
-      console.log("Error Message:", handler.error.message)
+      console.log(handler.code)
 
-      if (handler.error instanceof ConflictError) {
+      if (handler.code === 'ConflictError') {
         handler.set.status = handler.error.status;
 
         return {
