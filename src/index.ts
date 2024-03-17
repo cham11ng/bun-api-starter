@@ -1,23 +1,20 @@
 import { Elysia } from "elysia";
 import swagger from '@elysiajs/swagger';
-import { logger } from '@grotto/logysia';
 
 import config from './config';
 import * as db from './config/db';
 import userRoutes from './routes/user';
 import errorHandler from './middlewares/errorHandler';
+import loggerHandler from './middlewares/loggerHandler';
 import securityHandler from './middlewares/securityHandler';
-
-import ConflictError from './domain/exceptions/ConflictError';
 
 const app = new Elysia()
 
 db.connect();
 
 app
-  .use(logger())
+  .use(loggerHandler)
   .use(securityHandler)
-  .error({ ConflictError })
   .use(errorHandler)
   .use(swagger({
     path: '/docs',
