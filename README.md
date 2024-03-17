@@ -70,13 +70,18 @@ export default app;
 # double bun server initiated.
 $ Bun (🍔) API Starter is running at localhost:8000
 Started server http://localhost:3000
+
+# do this
+export const app = new Elysia();
 ```
+
 
 ```js
 // exception not captured onError.
-function controller(context: Context) {
-  //
-}
+function controller(context: Context) {}
+
+// do this
+const controller = (context: Context) => {}
 ```
 
 ## Happy Coding
