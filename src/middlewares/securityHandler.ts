@@ -1,6 +1,4 @@
-import { Elysia } from 'elysia';
-import cors from '@elysiajs/cors';
+import { Elysia } from "elysia";
+import cors from "@elysiajs/cors";
 
-export default (app: Elysia) =>
-  app
-    .use(cors())
+export default (app: Elysia) => app.use(cors());

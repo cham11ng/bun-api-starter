@@ -25,31 +25,30 @@ export function durationString(beforeTime: bigint): string {
   return timeMessage;
 }
 
-
 export function methodString(method: string): string {
   switch (method) {
     case "GET":
-      return yc.white("GET")
+      return yc.white("GET");
 
     case "POST":
-      return yc.yellow("POST")
+      return yc.yellow("POST");
 
     case "PUT":
-      return yc.blue("PUT")
+      return yc.blue("PUT");
 
     case "DELETE":
-      return yc.red("DELETE")
+      return yc.red("DELETE");
 
     case "PATCH":
-      return yc.green("PATCH")
+      return yc.green("PATCH");
 
     case "OPTIONS":
-      return yc.gray("OPTIONS")
+      return yc.gray("OPTIONS");
 
     case "HEAD":
-      return yc.magenta("HEAD")
+      return yc.magenta("HEAD");
 
     default:
-      return method
+      return method;
   }
 }

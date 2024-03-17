@@ -1,10 +1,10 @@
-import * as mongoose from 'mongoose';
+import * as mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true, select: false }
+    password: { type: String, required: true, select: false },
   },
   {
     timestamps: true,
@@ -17,10 +17,10 @@ const userSchema = new mongoose.Schema(
 );
 
 // Pre-save middleware to bcrypt the password
-userSchema.pre('save', function (next) {
-  if (this.isModified('password')) {
+userSchema.pre("save", function (next) {
+  if (this.isModified("password")) {
     this.password = Bun.password.hashSync(this.password, {
-      algorithm: "bcrypt"
+      algorithm: "bcrypt",
     });
   }
 
@@ -28,4 +28,4 @@ userSchema.pre('save', function (next) {
 });
 
 export type User = mongoose.InferSchemaType<typeof userSchema>;
-export const User = mongoose.model('User', userSchema);
+export const User = mongoose.model("User", userSchema);

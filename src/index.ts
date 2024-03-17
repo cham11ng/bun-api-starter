@@ -1,14 +1,14 @@
 import { Elysia } from "elysia";
-import swagger from '@elysiajs/swagger';
+import swagger from "@elysiajs/swagger";
 
-import config from './config';
-import * as db from './config/db';
-import userRoutes from './routes/user';
-import errorHandler from './middlewares/errorHandler';
-import loggerHandler from './middlewares/loggerHandler';
-import securityHandler from './middlewares/securityHandler';
+import config from "./config";
+import * as db from "./config/db";
+import userRoutes from "./routes/user";
+import errorHandler from "./middlewares/errorHandler";
+import loggerHandler from "./middlewares/loggerHandler";
+import securityHandler from "./middlewares/securityHandler";
 
-const app = new Elysia()
+const app = new Elysia();
 
 db.connect();
 
@@ -16,26 +16,28 @@ app
   .use(loggerHandler)
   .use(securityHandler)
   .use(errorHandler)
-  .use(swagger({
-    path: '/docs',
-    documentation: {
-      info: {
-        title: 'Bun (🍔) API Starter Docs',
-        version: config.app.version,
+  .use(
+    swagger({
+      path: "/docs",
+      documentation: {
+        info: {
+          title: "Bun (🍔) API Starter Docs",
+          version: config.app.version,
+        },
       },
-    },
-  }))
+    }),
+  )
   .get("/", () => {
     return {
       name: config.app.name,
-      version: config.app.version
-    }
+      version: config.app.version,
+    };
   })
   .use(userRoutes)
   .listen(config.app.port, () => {
     console.log(
-      `Bun (🍔) API Starter is running at ${app.server?.hostname}:${app.server?.port}`
-    )
+      `Bun (🍔) API Starter is running at ${app.server?.hostname}:${app.server?.port}`,
+    );
   });
 
 export default app;
