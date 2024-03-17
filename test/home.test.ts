@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'bun:test';
 
-import app from '../src';
+import { app } from '../src';
 import config from '../src/config';
 import { getRequest } from '.';
 

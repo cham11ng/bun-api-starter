@@ -60,6 +60,25 @@ $ docker compose logs -f
 mongodb://rootuser:root%40123@localhost:27017/starter?authSource=admin
 ```
 
+## Troubleshooting
+
+```bash
+# on default export error
+const app = new Elysia();
+export default app;
+
+# double bun server initiated.
+$ Bun (🍔) API Starter is running at localhost:8000
+Started server http://localhost:3000
+```
+
+```js
+// exception not captured onError.
+function controller(context: Context) {
+  //
+}
+```
+
 ## Happy Coding
 
 > @cham11ng

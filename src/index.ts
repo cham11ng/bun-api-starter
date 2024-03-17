@@ -8,7 +8,7 @@ import loggerHandler from './handlers/logger';
 import securityHandler from './handlers/security';
 import userRoutes from './routes/user';
 
-const app = new Elysia();
+export const app = new Elysia();
 
 db.connect();
 
@@ -27,16 +27,12 @@ app
       }
     })
   )
-  .get('/', () => {
-    return {
-      name: config.app.name,
-      version: config.app.version
-    };
-  })
+  .get('/', () => ({
+    name: config.app.name,
+    version: config.app.version
+  }))
   .use(userRoutes)
   .listen(config.app.port, () => {
     console.log(`Environment: ${config.app.env}`);
     console.log(`Bun (🍔) API Starter is running at ${app.server?.hostname}:${app.server?.port}`);
   });
-
-export default app;
