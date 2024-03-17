@@ -4,7 +4,7 @@ import * as mongoose from 'mongoose';
 const { dbUsername, dbPassword, dbHost, dbPort, dbName } = config.db;
 const connectionString = `mongodb://${dbUsername}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`;
 
-export async function connect() {
+export const connect = async () => {
   try {
     const res = await mongoose.connect(connectionString, { autoIndex: true });
 

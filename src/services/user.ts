@@ -1,11 +1,11 @@
 import { User } from '../models/User';
 import ConflictError from '../domain/exceptions/ConflictError';
 
-export async function create(payload: User) {
+export const create = async (payload: User) => {
   try {
-    const animal = new User(payload);
+    const user = new User(payload);
 
-    const res = await animal.save();
+    const res = await user.save();
 
     return res;
   } catch (e: any) {
@@ -17,7 +17,7 @@ export async function create(payload: User) {
   }
 }
 
-export async function fetchAll() {
+export const fetchAll = async () => {
   const users = await User.find();
 
   return users;

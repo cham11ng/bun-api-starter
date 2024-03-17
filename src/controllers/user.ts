@@ -2,7 +2,7 @@ import { Context } from 'elysia';
 import { User } from '../models/User';
 import * as userService from '../services/user';
 
-export async function create(context: Context) {
+export const create = async (context: Context) => {
   const { name, email, password } = context.body as User;
 
   const data = await userService.create({
@@ -15,7 +15,7 @@ export async function create(context: Context) {
   }
 }
 
-export async function fetchAll() {
+export const fetchAll = async () => {
   const users = await userService.fetchAll();
 
   return {
