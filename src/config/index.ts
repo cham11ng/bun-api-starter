@@ -4,6 +4,7 @@ const isTestEnvironment = process.env.NODE_ENV === 'test';
 
 export default {
   app: {
+    env: process.env.NODE_ENV,
     name: data.name,
     version: data.version,
     host: process.env.TEST_APP_HOST,

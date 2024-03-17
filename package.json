@@ -1,9 +1,10 @@
 {
   "name": "bun-api-starter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "test": "NODE_ENV=test bun test ./test/**.test.ts",
     "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts",
     "pretty": "prettier --write \"**/*.{ts,js}\"",
     "lint": "eslint src test --ext .ts",
     "lint:fix": "eslint src test --ext .ts --fix"

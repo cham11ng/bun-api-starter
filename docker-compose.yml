@@ -15,15 +15,30 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: "root@123"
       MONGO_INITDB_DATABASE: ${DB_NAME:-starter}
 
-  api:
+  dev:
     image: "oven/bun"
     env_file: ".env.docker"
-    container_name: "starter-api"
+    container_name: "starter-dev"
     volumes:
       - "./:/source"
     working_dir: /source
     depends_on:
       - mongodb
     ports:
-      - "8000:8000"
+      - 8000:8000
+    environment:
+      - NODE_ENV=development
     command: bash -c "bun install && bun run dev"
+
+  prod:
+    build:
+      context: .
+      target: production
+    container_name: 'starter-prod'
+    env_file: ".env.docker"
+    depends_on:
+      - mongodb
+    ports:
+      - 8080:8000
+    environment:
+      - NODE_ENV=production

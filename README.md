@@ -34,12 +34,20 @@ curl -X POST -H "Content-Type: application/json" \
 ### Docker
 
 ```bash
+# production
+docker build --target production -t bun-api-starter-prod .
+docker run -d --rm --env-file .env.docker \
+  -p 8080:8000 \
+  -t bun-api-starter-prod:latest
+```
+
+```bash
 # Check logs
-$ docker compose up -d
+$ docker compose up -d dev
 [+] Running 2/3
  ⠋ Network bun-api-starter_default  Created           1.0s
  ✔ Container starter-mongodb        Started           0.5s
- ✔ Container starter-api            Started           0.9s
+ ✔ Container starter-dev            Started           0.9s
 
 # Check logs.
 $ docker compose logs -f
