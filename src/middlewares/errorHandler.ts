@@ -7,9 +7,7 @@ export default (app: Elysia) =>
   app
     .error({ ConflictError })
     .onError((handler) => {
-      console.log(handler.code)
-
-      if (handler.code === 'ConflictError') {
+      if (handler.error instanceof ConflictError) {
         handler.set.status = handler.error.status;
 
         return {
