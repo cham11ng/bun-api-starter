@@ -1,11 +1,11 @@
-import * as yc from "yoctocolors";
+import * as yc from 'yoctocolors';
 
 export function durationString(beforeTime: bigint): string {
   const now = process.hrtime.bigint();
   const timeDifference = now - beforeTime;
   const nanoseconds = Number(timeDifference);
 
-  let timeMessage: string = "";
+  let timeMessage: string = '';
 
   if (nanoseconds >= 1e9) {
     const seconds = (nanoseconds / 1e9).toFixed(2);
@@ -27,26 +27,26 @@ export function durationString(beforeTime: bigint): string {
 
 export function methodString(method: string): string {
   switch (method) {
-    case "GET":
-      return yc.white("GET");
+    case 'GET':
+      return yc.white('GET');
 
-    case "POST":
-      return yc.yellow("POST");
+    case 'POST':
+      return yc.yellow('POST');
 
-    case "PUT":
-      return yc.blue("PUT");
+    case 'PUT':
+      return yc.blue('PUT');
 
-    case "DELETE":
-      return yc.red("DELETE");
+    case 'DELETE':
+      return yc.red('DELETE');
 
-    case "PATCH":
-      return yc.green("PATCH");
+    case 'PATCH':
+      return yc.green('PATCH');
 
-    case "OPTIONS":
-      return yc.gray("OPTIONS");
+    case 'OPTIONS':
+      return yc.gray('OPTIONS');
 
-    case "HEAD":
-      return yc.magenta("HEAD");
+    case 'HEAD':
+      return yc.magenta('HEAD');
 
     default:
       return method;

@@ -1,0 +1,26 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["sonarjs"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "ignorePatterns": ["./node_modules/*"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:sonarjs/recommended"
+  ],
+  "rules": {
+    "no-error-on-unmatched-pattern": "off",
+    "@typescript-eslint/no-explicit-any": "off", // TODO: Remove this.
+    "@typescript-eslint/no-non-null-assertion": "off",
+		"@typescript-eslint/ban-ts-comment": "off",
+		"@typescript-eslint/no-namespace": "off",
+    "no-return-await": "off",
+    "sonarjs/cognitive-complexity": "off",
+    "@typescript-eslint/no-shadow": ["error"]
+  }
+}
