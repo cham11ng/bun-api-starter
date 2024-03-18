@@ -41,3 +41,4 @@ jobs:
           DB_HOST: mongodb
           TEST_APP_HOST: 127.0.0.1
           TEST_APP_PORT: 8001
+          JWT_SECRET: secret

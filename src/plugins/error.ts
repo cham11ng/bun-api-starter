@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 
 import ConflictError from '../domain/exceptions/ConflictError';
 import UnauthorizedError from '../domain/exceptions/UnauthorizedError';
-import ErrorResponse from '../domain/types/ErrorResponse';
+import ErrorResponse from '../domain/types/generics/ErrorResponse';
 
 export default (app: Elysia) =>
   app.error({ ConflictError, UnauthorizedError }).onError((handler): ErrorResponse<number> => {

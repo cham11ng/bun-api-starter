@@ -3,9 +3,9 @@ import { Elysia } from 'elysia';
 
 import config from './config';
 import * as db from './config/db';
-import errorHandler from './handlers/error';
-import loggerHandler from './handlers/logger';
-import securityHandler from './handlers/security';
+import errorPlugin from './plugins/error';
+import loggerPlugin from './plugins/logger';
+import securityPlugin from './plugins/security';
 import authRoutes from './routes/auth';
 import protectedRoutes from './routes/protected';
 
@@ -14,9 +14,9 @@ export const app = new Elysia();
 db.connect();
 
 app
-  .use(loggerHandler)
-  .use(securityHandler)
-  .use(errorHandler)
+  .use(loggerPlugin)
+  .use(securityPlugin)
+  .use(errorPlugin)
   .use(
     swagger({
       path: '/docs',

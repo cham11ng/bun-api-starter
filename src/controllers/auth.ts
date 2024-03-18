@@ -1,7 +1,7 @@
 import { Context } from 'elysia';
 
-import { ContextWithJWT } from '../domain/types/ContextWithJWT';
-import SuccessResponse from '../domain/types/SuccessResponse';
+import { ContextWithJWT } from '../domain/types/extends/ContextWithJWT';
+import SuccessResponse from '../domain/types/generics/SuccessResponse';
 import { User } from '../models/User';
 import { signIn } from '../services/auth';
 import { create } from '../services/user';

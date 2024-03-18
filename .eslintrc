@@ -16,7 +16,7 @@
   ],
   "rules": {
     "no-error-on-unmatched-pattern": "off",
-    "@typescript-eslint/no-explicit-any": "warn", // TODO: Remove this.
+    "@typescript-eslint/no-explicit-any": "warn",
     "sonarjs/cognitive-complexity": "off",
     "@typescript-eslint/no-shadow": ["error"],
     "@typescript-eslint/ban-ts-comment": "off",

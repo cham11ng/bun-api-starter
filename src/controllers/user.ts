@@ -1,8 +1,8 @@
 import { Context } from 'elysia';
 
-import { ContextWithUser } from '../domain/types/ContextWithProfile';
+import { ContextWithUser } from '../domain/types/extends/ContextWithUser';
+import SuccessResponse from '../domain/types/generics/SuccessResponse';
 import LoggedInUser from '../domain/types/LoggedInUser';
-import SuccessResponse from '../domain/types/SuccessResponse';
 import type { User } from '../models/User';
 import * as userService from '../services/user';
 
