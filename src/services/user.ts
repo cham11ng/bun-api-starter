@@ -14,9 +14,13 @@ import { User } from '../models/User';
  */
 export async function create(payload: User) {
   try {
-    const user = new User(payload);
+    const user = await User.findOne({ email: payload.email });
 
-    return await user.save();
+    if (user) {
+      throw new ConflictError('User already exists!');
+    }
+
+    return await User.create(payload);
   } catch (e) {
     const error = e as MongoServerError;
 
