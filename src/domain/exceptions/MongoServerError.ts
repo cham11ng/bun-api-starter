@@ -1,4 +1,4 @@
-class MongoServerError extends Error {
+export default class MongoServerError extends Error {
   public code: number;
 
   constructor(message: string, code: number) {
@@ -7,5 +7,3 @@ class MongoServerError extends Error {
     this.code = code;
   }
 }
-
-export default MongoServerError;

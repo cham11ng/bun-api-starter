@@ -1,20 +1,25 @@
 import data from '../../package.json';
 
-const isTestEnvironment = process.env.NODE_ENV === 'test';
+const isTestEnvironment = Bun.env.NODE_ENV === 'test';
 
 export default {
   app: {
-    env: process.env.NODE_ENV,
+    env: Bun.env.NODE_ENV,
     name: data.name,
     version: data.version,
-    host: process.env.TEST_APP_HOST,
-    port: (isTestEnvironment ? process.env.TEST_APP_PORT : process.env.APP_PORT) || '8000'
+    host: Bun.env.TEST_APP_HOST,
+    port: (isTestEnvironment ? Bun.env.TEST_APP_PORT : Bun.env.APP_PORT) || '8000'
   },
   db: {
-    dbName: process.env.DB_NAME,
-    dbPassword: process.env.DB_PASSWORD,
-    dbUsername: process.env.DB_USERNAME,
-    dbPort: process.env.DB_PORT,
-    dbHost: process.env.DB_HOST
+    dbName: Bun.env.DB_NAME,
+    dbPassword: Bun.env.DB_PASSWORD,
+    dbUsername: Bun.env.DB_USERNAME,
+    dbPort: Bun.env.DB_PORT,
+    dbHost: Bun.env.DB_HOST
+  },
+  auth: {
+    jwt: {
+      secret: Bun.env.JWT_SECRET as string
+    }
   }
 };

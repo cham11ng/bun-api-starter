@@ -2,13 +2,14 @@ import { Elysia } from 'elysia';
 import { StatusCodes } from 'http-status-codes';
 
 import ConflictError from '../domain/exceptions/ConflictError';
+import UnauthorizedError from '../domain/exceptions/UnauthorizedError';
 import ErrorResponse from '../domain/types/ErrorResponse';
 
 export default (app: Elysia) =>
-  app.error({ ConflictError }).onError((handler): ErrorResponse<number> => {
+  app.error({ ConflictError, UnauthorizedError }).onError((handler): ErrorResponse<number> => {
     console.error(handler.error?.stack);
 
-    if (handler.error instanceof ConflictError) {
+    if (handler.error instanceof ConflictError || handler.error instanceof UnauthorizedError) {
       handler.set.status = handler.error.status;
 
       return {

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@elysiajs/cors": "^1.0.0",
+    "@elysiajs/jwt": "^1.0.0",
     "@elysiajs/swagger": "^1.0.0",
     "elysia": "^1.0.0",
     "http-status-codes": "^2.3.0",
