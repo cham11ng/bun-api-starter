@@ -4,6 +4,8 @@ import * as userController from '../controllers/user';
 
 export default (app: Elysia) =>
   app
+    .get('/me', userController.me)
+    .get('/users/:id', userController.fetchOne)
     .post('/users', userController.create, {
       body: t.Object({
         name: t.String({ minLength: 1, maxLength: 256 }),

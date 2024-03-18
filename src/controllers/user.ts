@@ -1,8 +1,17 @@
 import { Context } from 'elysia';
 
+import { ContextWithUser } from '../domain/types/ContextWithProfile';
+import LoggedInUser from '../domain/types/LoggedInUser';
 import SuccessResponse from '../domain/types/SuccessResponse';
 import type { User } from '../models/User';
 import * as userService from '../services/user';
+
+export const me = async (context: ContextWithUser): Promise<SuccessResponse<LoggedInUser>> => {
+  return {
+    message: 'User details fetched successfully!',
+    data: context.user
+  };
+};
 
 export const create = async (context: Context): Promise<SuccessResponse<User>> => {
   const body = context.body as User;
@@ -21,5 +30,15 @@ export const fetchAll = async () => {
   return {
     message: 'User fetched successfully.',
     data: users
+  };
+};
+
+export const fetchOne = async (context: Context) => {
+  const { id } = context.params;
+  const user = await userService.fetchById(id);
+
+  return {
+    message: 'User fetched successfully.',
+    data: user
   };
 };

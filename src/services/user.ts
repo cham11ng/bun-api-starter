@@ -1,3 +1,5 @@
+import { NotFoundError } from 'elysia';
+
 import ConflictError from '../domain/exceptions/ConflictError';
 import MongoServerError from '../domain/exceptions/MongoServerError';
 import { User } from '../models/User';
@@ -31,6 +33,22 @@ export async function create(payload: User) {
  *
  * @returns {Promise<User[]>} A promise that resolves to an array of User objects.
  */
-export function fetchAll() {
+export function fetchAll(): Promise<User[]> {
   return User.find();
+}
+
+/**
+ * Fetches a user by id.
+ *
+ * @param {string} id The id of the user to fetch.
+ * @returns {Promise<User>} A promise that resolves array User objects.
+ */
+export async function fetchById(id: string): Promise<User> {
+  const user = await User.findById(id);
+
+  if (!user) {
+    throw new NotFoundError('User not found.');
+  }
+
+  return user;
 }

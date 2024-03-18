@@ -7,7 +7,7 @@ import errorHandler from './handlers/error';
 import loggerHandler from './handlers/logger';
 import securityHandler from './handlers/security';
 import authRoutes from './routes/auth';
-import userRoutes from './routes/user';
+import protectedRoutes from './routes/protected';
 
 export const app = new Elysia();
 
@@ -32,8 +32,8 @@ app
     name: config.app.name,
     version: config.app.version
   }))
-  .use(userRoutes)
   .use(authRoutes)
+  .use(protectedRoutes)
   .listen(config.app.port, () => {
     console.log(`Environment: ${config.app.env}`);
     console.log(`Bun (🍔) API Starter is running at ${app.server?.hostname}:${app.server?.port}`);
