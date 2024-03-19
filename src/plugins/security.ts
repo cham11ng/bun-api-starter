@@ -8,6 +8,7 @@ export default (app: Elysia) =>
   app.use(cors()).use(
     jwt({
       name: 'jwt',
-      secret: config.auth.jwt.secret
+      secret: config.auth.jwt.secret,
+      exp: config.auth.jwt.expiresIn
     })
   );
