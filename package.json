@@ -1,13 +1,13 @@
 {
   "name": "bun-api-starter",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "scripts": {
     "test": "NODE_ENV=test bun test ./test/**.test.ts",
-    "dev": "bun run --watch src/index.ts",
-    "start": "bun run src/index.ts",
+    "dev": "bun run --watch src/app.ts",
+    "start": "bun run src/app.ts",
     "pretty": "prettier --write \"**/*.{ts,js}\"",
-    "lint": "eslint src test --ext .ts",
-    "lint:fix": "eslint src test --ext .ts --fix"
+    "lint": "eslint **/*.{ts,js}",
+    "lint:fix": "eslint --fix"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.0.2",
