@@ -2,6 +2,12 @@ name: Bun (🍔) API Starter CI
 
 on:
   # Runs on pushes targeting the default branch
+  pull_request:
+    paths-ignore:
+      - "README.md"
+      - "mongodb"
+    branches:
+      - main
   push:
     paths-ignore:
       - "README.md"
