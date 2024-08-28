@@ -18,7 +18,7 @@
     "no-error-on-unmatched-pattern": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "sonarjs/cognitive-complexity": "off",
-    "@typescript-eslint/no-shadow": ["error"],
+    "@typescript-eslint/no-shadow": ["error",  { "hoist": "all"}],
     "@typescript-eslint/ban-ts-comment": "off",
     "simple-import-sort/imports": "warn",
     "jsdoc/no-types": "off",

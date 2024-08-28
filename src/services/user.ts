@@ -7,7 +7,7 @@ import { User } from '../models/User';
 /**
  * Creates a new user.
  *
- * @param payload - The user data to be created.
+ * @param {User} payload - The user data to be created.
  * @returns {Promise<User>} A promise that resolves to the created user.
  * @throws {ConflictError} If a user with the same data already exists.
  * @throws {Error} If an error occurs while creating the user.

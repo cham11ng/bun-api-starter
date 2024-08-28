@@ -4,7 +4,7 @@ import { User } from '../models/User';
 /**
  * Signs in a user.
  *
- * @param payload - The user data to be signed in.
+ * @param {{ email: string; password: string }} payload - The user data to be signed in.
  * @param {string} payload.email The email of the user.
  * @param {string} payload.password The password of the user.
  * @returns {Promise<User>} A promise that resolves to the user that signed in.

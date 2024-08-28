@@ -21,7 +21,7 @@ export function getRequest(route: string) {
  *
  * @param {string} route The route.
  * @param {Payload} payload The payload.
- * @returns
+ * @returns {Request}
  */
 export function postRequest<Payload extends Record<string, unknown>>(route: string, payload: Payload) {
   const fullPath = path.join(baseUrl, route);

@@ -39,4 +39,5 @@ export interface User extends UserSchema, mongoose.Document {
   comparePassword: (password: string) => boolean;
 }
 
+// eslint-disable-next-line sonarjs/no-redeclare
 export const User = mongoose.model<User>('User', userSchema);
