@@ -15,8 +15,6 @@ db.connect();
 
 app
   .use(loggerPlugin)
-  .use(securityPlugin)
-  .use(errorPlugin)
   .use(
     swagger({
       path: '/docs',
@@ -28,6 +26,8 @@ app
       }
     })
   )
+  .use(securityPlugin)
+  .use(errorPlugin)
   .get('/', () => ({
     name: config.app.name,
     version: config.app.version
